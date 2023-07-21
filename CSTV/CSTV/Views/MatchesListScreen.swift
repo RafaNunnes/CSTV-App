@@ -9,7 +9,28 @@ import SwiftUI
 
 struct MatchesListScreen: View {
     var body: some View {
-        Text("TODO")
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 24) {
+                getMockView()
+            }
+            .padding(.top, 24)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 24)
+        }
+        .navigationBarTitleDisplayMode(.large)
+        .navigationTitle("Partidas")
+    }
+    
+    @ViewBuilder
+    func getMockView() -> some View {
+        MatchCardView(timeText: "Hoje, 21:00", isLive: true)
+        MatchCardView(timeText: "Hoje, 21:00", isLive: false)
+        MatchCardView(timeText: "Hoje, 21:00", isLive: true)
+        MatchCardView(timeText: "Hoje, 21:00", isLive: false)
+        MatchCardView(timeText: "Hoje, 21:00", isLive: true)
+        MatchCardView(timeText: "Hoje, 21:00", isLive: false)
+        MatchCardView(timeText: "Hoje, 21:00", isLive: true)
+        MatchCardView(timeText: "Hoje, 21:00", isLive: false)
     }
 }
 

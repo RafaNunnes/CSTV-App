@@ -11,9 +11,8 @@ struct MainAppView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                ColorPalette.appBackground.ignoresSafeArea()
                 MatchesListScreen()
-                    .navigationTitle("Partidas")
-                    .navigationBarTitleDisplayMode(.large)
             }
         }
     }
