@@ -9,13 +9,13 @@ import SwiftUI
 
 struct MainAppView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            ZStack {
+                MatchesListScreen()
+                    .navigationTitle("Partidas")
+                    .navigationBarTitleDisplayMode(.large)
+            }
         }
-        .padding()
     }
 }
 
