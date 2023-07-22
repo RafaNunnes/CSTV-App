@@ -12,25 +12,24 @@ struct PlayersCardsListView: View {
         Player(name: "Rafael", nickName: "bzradias", photo: ""),
         Player(name: "João", nickName: "Jon", photo: ""),
         Player(name: "Pedro", nickName: "Peter", photo: ""),
+        Player(name: "Mateus", nickName: "Matt", photo: ""),
         Player(name: "Lucas", nickName: "Lukas", photo: "")]
     
+    private let columnItens: [GridItem] = [
+        GridItem(.flexible(), spacing: 13),
+        GridItem(.flexible(), spacing: 13)
+    ]
+    
     var body: some View {
-        HStack(alignment: .center, spacing: 13) {
-            mockPlayersCards
+        LazyVGrid(columns: columnItens, alignment: .center, spacing: 13) {
+            ForEach((0..<players.count), id: \.self) { index in
+                PlayerCardView(cardOrientation: cardOrientationByIndex(index), player: players[index])
+            }
         }
     }
     
-    @ViewBuilder
-    var mockPlayersCards: some View {
-        
-        Grid(horizontalSpacing: 13) {
-            ForEach(players, id: \.name) { player in
-                GridRow {
-                    PlayerCardView(cardOrientation: .Left, player: player)
-                    PlayerCardView(cardOrientation: .Right, player: player)
-                }
-            }
-        }
+    private func cardOrientationByIndex(_ index: Int) -> PlayerCardOrientation {
+        return index % 2 == 0 ? .Left : .Right
     }
 }
 

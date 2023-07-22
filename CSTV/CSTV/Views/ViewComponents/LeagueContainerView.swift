@@ -25,5 +25,7 @@ struct LeagueContainerView: View {
 struct LeagueContainerView_Previews: PreviewProvider {
     static var previews: some View {
         LeagueContainerView(leagueName: "League + serie")
+            .padding()
+            .background(ColorPalette.cardBackground)
     }
 }
