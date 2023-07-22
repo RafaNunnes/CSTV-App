@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct MainAppView: View {
+    init() {
+        Theme.navigationBarColors(background: ColorPalette.appBackground.toUIColor(), titleColor: ColorPalette.textPrimary.toUIColor())
+    }
+    
     var body: some View {
-        NavigationView {
-            ZStack {
-                ColorPalette.appBackground.ignoresSafeArea()
-                MatchesListScreen()
-            }
+        ZStack {
+            ColorPalette.appBackground.ignoresSafeArea()
+            MatchesListScreen()
         }
     }
 }

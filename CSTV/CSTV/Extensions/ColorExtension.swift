@@ -18,4 +18,8 @@ extension Color {
             opacity: alpha
         )
     }
+    
+    public func toUIColor() -> UIColor {
+        return UIColor(self)
+    }
 }

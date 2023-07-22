@@ -8,29 +8,37 @@
 import SwiftUI
 
 struct MatchesListScreen: View {
-    var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 24) {
-                getMockView()
-            }
-            .padding(.top, 24)
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 24)
-        }
-        .navigationBarTitleDisplayMode(.large)
-        .navigationTitle("Partidas")
-    }
+    @State private var path: NavigationPath = NavigationPath()
     
-    @ViewBuilder
-    func getMockView() -> some View {
-        MatchCardView(timeText: "Hoje, 21:00", isLive: true)
-        MatchCardView(timeText: "Hoje, 21:00", isLive: false)
-        MatchCardView(timeText: "Hoje, 21:00", isLive: true)
-        MatchCardView(timeText: "Hoje, 21:00", isLive: false)
-        MatchCardView(timeText: "Hoje, 21:00", isLive: true)
-        MatchCardView(timeText: "Hoje, 21:00", isLive: false)
-        MatchCardView(timeText: "Hoje, 21:00", isLive: true)
-        MatchCardView(timeText: "Hoje, 21:00", isLive: false)
+    @ObservedObject private var matchesViewModel: MatchViewModel = MatchViewModel()
+    
+    var body: some View {
+        NavigationStack(path: $path) {
+            ZStack {
+                ColorPalette.appBackground.ignoresSafeArea()
+                
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 24) {
+                        ForEach(matchesViewModel.matchesList) { match in
+                            NavigationLink(value: match) {
+                                MatchCardView(timeText: match.matchTime, isLive: match.isLive)
+                            }
+                        }
+                    }
+                    .padding(.top, 24)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 24)
+                }
+                .navigationBarTitleDisplayMode(.large)
+                .navigationTitle(
+                    Text("Partidas")
+                        .foregroundColor(ColorPalette.textPrimary)
+                )
+            }
+            .navigationDestination(for: Match.self) { match in
+                MatchDetailScreen()
+            }
+        }
     }
 }
 

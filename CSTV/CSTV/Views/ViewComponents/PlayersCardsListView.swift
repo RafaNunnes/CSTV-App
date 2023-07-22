@@ -9,11 +9,11 @@ import SwiftUI
 
 struct PlayersCardsListView: View {
     let players: [Player] = [
-        Player(name: "Rafael", nickName: "bzradias", photo: ""),
-        Player(name: "João", nickName: "Jon", photo: ""),
-        Player(name: "Pedro", nickName: "Peter", photo: ""),
-        Player(name: "Mateus", nickName: "Matt", photo: ""),
-        Player(name: "Lucas", nickName: "Lukas", photo: "")]
+        Player(name: "Rafael", nickName: "bzradias", photoPath: ""),
+        Player(name: "João", nickName: "Jon", photoPath: ""),
+        Player(name: "Pedro", nickName: "Peter", photoPath: ""),
+        Player(name: "Mateus", nickName: "Matt", photoPath: ""),
+        Player(name: "Lucas", nickName: "Lukas", photoPath: "")]
     
     private let columnItens: [GridItem] = [
         GridItem(.flexible(), spacing: 13),

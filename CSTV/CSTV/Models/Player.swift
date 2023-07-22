@@ -10,5 +10,5 @@ import Foundation
 struct Player {
     let name: String
     let nickName: String
-    let photo: String
+    let photoPath: String
 }

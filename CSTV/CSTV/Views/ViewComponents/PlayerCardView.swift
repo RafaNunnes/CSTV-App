@@ -64,8 +64,7 @@ struct PlayerCardView: View {
 
 struct PlayerCardView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerCardView(cardOrientation: .Left, player: Player(name: "Nome do Jogador", nickName: "Nickname", photo: ""))
+        PlayerCardView(cardOrientation: .Left, player: Player(name: "Nome do Jogador", nickName: "Nickname", photoPath: ""))
             .frame(width: 174, height: 54)
-//            .frame(width: 174*2, height: 54*2)
     }
 }
