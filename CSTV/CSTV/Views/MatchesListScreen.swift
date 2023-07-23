@@ -30,10 +30,7 @@ struct MatchesListScreen: View {
                     .padding(.horizontal, 24)
                 }
                 .navigationBarTitleDisplayMode(.large)
-                .navigationTitle(
-                    Text("Partidas")
-                        .foregroundColor(ColorPalette.textPrimary)
-                )
+                .navigationTitle("Partidas")
             }
             .navigationDestination(for: Match.self) { match in
                 MatchDetailScreen()

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MatchDetailScreen: View {
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         ZStack {
             ColorPalette.appBackground.ignoresSafeArea()
@@ -25,6 +27,15 @@ struct MatchDetailScreen: View {
             .padding(.top, 24)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("League + serie")
+            .navigationBarBackButtonHidden()
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Image("CustomBackButtonIcon")
+                        .onTapGesture {
+                            self.presentation.wrappedValue.dismiss()
+                        }
+                }
+            })
         }
     }
 }
@@ -32,7 +43,6 @@ struct MatchDetailScreen: View {
 struct MatchDetailScreen_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-//            ColorPalette.appBackground.ignoresSafeArea()
             MatchDetailScreen()
         }
     }
