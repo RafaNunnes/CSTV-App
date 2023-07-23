@@ -17,24 +17,34 @@ struct MatchesListScreen: View {
             ZStack {
                 ColorPalette.appBackground.ignoresSafeArea()
                 
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 24) {
-                        ForEach(matchesViewModel.matchesList) { match in
-                            NavigationLink(value: match) {
-                                MatchCardView(timeText: match.matchTime, isLive: match.isLive)
+                if matchesViewModel.isSearching {
+                    ProgressView()
+                } else {
+                    ScrollView(showsIndicators: false) {
+                        VStack(spacing: 24) {
+                            ForEach(matchesViewModel.matchesList, id: \.id) { match in
+                                NavigationLink(value: match) {
+                                    MatchCardView(timeText: match.begin_at, isLive: false)
+                                }
                             }
                         }
+                        .padding(.top, 24)
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal, 24)
                     }
-                    .padding(.top, 24)
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal, 24)
+                    .refreshable {
+                        await matchesViewModel.refresh()
+                    }
                 }
-                .navigationBarTitleDisplayMode(.large)
-                .navigationTitle("Partidas")
             }
+            .navigationBarTitleDisplayMode(.large)
+            .navigationTitle("Partidas")
             .navigationDestination(for: Match.self) { match in
                 MatchDetailScreen()
             }
+        }
+        .task {
+            await matchesViewModel.fetchMatchesList()
         }
     }
 }

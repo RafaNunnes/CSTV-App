@@ -41,7 +41,6 @@ struct MatchCardView: View {
             }
         }
         .cornerRadius(radius: 16, corner: .allCorners)
-//        .fixedSize()
     }
 }
 

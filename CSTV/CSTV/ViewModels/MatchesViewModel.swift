@@ -9,54 +9,27 @@ import Foundation
 
 class MatchViewModel: ObservableObject {
     @Published public var matchesList: [Match] = []
+    @Published var isSearching = false
     
-    init() {
-        // Mocked list
-        matchesList = [
-            Match(firstTeam: Team(players: [
-                Player(name: "Rafael", nickName: "bzradias", photoPath: ""),
-                Player(name: "João", nickName: "Jon", photoPath: "")
-            ], imagePath: ""), secondTeam: Team(players: [
-                Player(name: "Pedro", nickName: "Peter", photoPath: ""),
-                Player(name: "Mateus", nickName: "Matt", photoPath: ""),
-                Player(name: "Lucas", nickName: "Lukas", photoPath: "")
-            ], imagePath: ""), isLive: true, matchTime: "Hoje, 21:00"),
-            
-            Match(firstTeam: Team(players: [
-                Player(name: "Rafael", nickName: "bzradias", photoPath: ""),
-                Player(name: "João", nickName: "Jon", photoPath: "")
-            ], imagePath: ""), secondTeam: Team(players: [
-                Player(name: "Pedro", nickName: "Peter", photoPath: ""),
-                Player(name: "Mateus", nickName: "Matt", photoPath: ""),
-                Player(name: "Lucas", nickName: "Lukas", photoPath: "")
-            ], imagePath: ""), isLive: false, matchTime: "Hoje, 21:00"),
-            
-            Match(firstTeam: Team(players: [
-                Player(name: "Rafael", nickName: "bzradias", photoPath: ""),
-                Player(name: "João", nickName: "Jon", photoPath: "")
-            ], imagePath: ""), secondTeam: Team(players: [
-                Player(name: "Pedro", nickName: "Peter", photoPath: ""),
-                Player(name: "Mateus", nickName: "Matt", photoPath: ""),
-                Player(name: "Lucas", nickName: "Lukas", photoPath: "")
-            ], imagePath: ""), isLive: true, matchTime: "Hoje, 21:00"),
-            
-            Match(firstTeam: Team(players: [
-                Player(name: "Rafael", nickName: "bzradias", photoPath: ""),
-                Player(name: "João", nickName: "Jon", photoPath: "")
-            ], imagePath: ""), secondTeam: Team(players: [
-                Player(name: "Pedro", nickName: "Peter", photoPath: ""),
-                Player(name: "Mateus", nickName: "Matt", photoPath: ""),
-                Player(name: "Lucas", nickName: "Lukas", photoPath: "")
-            ], imagePath: ""), isLive: false, matchTime: "Hoje, 21:00"),
-            
-            Match(firstTeam: Team(players: [
-                Player(name: "Rafael", nickName: "bzradias", photoPath: ""),
-                Player(name: "João", nickName: "Jon", photoPath: "")
-            ], imagePath: ""), secondTeam: Team(players: [
-                Player(name: "Pedro", nickName: "Peter", photoPath: ""),
-                Player(name: "Mateus", nickName: "Matt", photoPath: ""),
-                Player(name: "Lucas", nickName: "Lukas", photoPath: "")
-            ], imagePath: ""), isLive: true, matchTime: "Hoje, 21:00")
-        ]
+    let pandaScore: PandaScoreInterface = PandaScoreInterface()
+    
+    public func refresh() async {
+        await self.fetchMatchesList()
+    }
+    
+    @MainActor
+    public func fetchMatchesList() async {
+        var resultMatchList: [Match] = []
+        isSearching = true
+        
+        // Fetch running matches
+        resultMatchList = await pandaScore.sendRequest(type: .RunningMatches)
+        
+        // Fetch upcoming matches
+        resultMatchList.append(contentsOf: await pandaScore.sendRequest(type: .UpcomingMatches))
+        
+        self.matchesList = resultMatchList
+        
+        isSearching = false
     }
 }

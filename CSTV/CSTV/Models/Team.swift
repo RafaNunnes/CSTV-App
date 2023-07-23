@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Team {
-    var players: [Player]
-    var imagePath: String
+struct Team: Codable {
+    let id: Int
+    let image_url: String?
+    let name: String
+    let slug: String
 }
