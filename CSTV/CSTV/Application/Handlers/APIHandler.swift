@@ -8,7 +8,7 @@
 import Foundation
 
 class APIHandler {
-    static public func sendRequest(request: URLRequest) async -> [Match] {
+    static public func sendRequest<DecodableObject: Codable>(request: URLRequest) async -> [DecodableObject] {
         let session = URLSession.shared
         do {
             let (data, response) = try await session.data(for: request)
@@ -17,7 +17,7 @@ class APIHandler {
                 return []
             }
             
-            let responseData = try JSONDecoder().decode([Match].self, from: data)
+            let responseData: [DecodableObject] = try JSONDecoder().decode([DecodableObject].self, from: data)
             LogHandler.shared.notice("API Request successfully \(responseData)")
             return responseData
         } catch {

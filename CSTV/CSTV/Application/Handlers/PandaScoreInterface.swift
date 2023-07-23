@@ -10,7 +10,7 @@ import Foundation
 public enum PandaScoreRequestType {
     case UpcomingMatches
     case RunningMatches
-    case Player
+    case Player(id: Int)
     
     internal func getRequestURL() -> URLRequest {
         var request: URLRequest
@@ -20,8 +20,8 @@ public enum PandaScoreRequestType {
             request = URLRequest(url: NSURL(string: "https://api.pandascore.co/csgo/matches/upcoming")! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         case .RunningMatches:
             request = URLRequest(url: NSURL(string: "https://api.pandascore.co/csgo/matches/running")! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
-        case .Player:
-            request = URLRequest(url: NSURL(string: "https://api.pandascore.co/csgo/matches/upcoming")! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        case .Player(let id):
+            request = URLRequest(url: NSURL(string: "https://api.pandascore.co/players/\(id)")! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         }
         
         return request
