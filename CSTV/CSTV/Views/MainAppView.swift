@@ -10,10 +10,6 @@ import SwiftUI
 struct MainAppView: View {
     @State var isSplashLoading: Bool = true
     
-    init() {
-        Theme.navigationBarColors(background: ColorPalette.appBackground.toUIColor(), titleColor: ColorPalette.textPrimary.toUIColor())
-    }
-    
     var body: some View {
         if isSplashLoading {
             SplashScreen(isActive: $isSplashLoading)

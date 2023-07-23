@@ -21,6 +21,7 @@ struct SplashScreen: View {
                 .blur(radius: iconBlur)
                 .scaleEffect(iconScaleSize)
         }
+        .statusBarHidden(true)
         .onAppear {
             withAnimation(.easeOut(duration: 1.5)) {
                 self.iconBlur = 0
