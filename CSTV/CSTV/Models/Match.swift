@@ -14,6 +14,14 @@ struct Match: Codable, Hashable {
     let serie: Serie
     let opponents: [Opponent]
     
+    public func firstTeam() -> Team? {
+        return opponents.first?.opponent
+    }
+    
+    public func secondTeam() -> Team? {
+        return opponents.count > 1 ? opponents.last?.opponent : nil
+    }
+    
     static func == (lhs: Match, rhs: Match) -> Bool {
         return lhs.id == rhs.id
     }

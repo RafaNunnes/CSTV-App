@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MatchCardView: View {
-    var timeText: String
-    var isLive: Bool
+    let match: Match
+    let isLive: Bool
     
     var body: some View {
         ZStack(alignment: .center) {
@@ -22,10 +22,10 @@ struct MatchCardView: View {
                     
                     HStack(alignment: .top) {
                         Spacer()
-                        MatchTimeView(timeText: timeText, isLive: isLive)
+                        MatchTimeView(timeText: match.begin_at, isLive: isLive)
                     }
                     .frame(height: 25)
-                    TeamsContainerView(firstTeamName: "Time 1", secondTeamName: "Time 2")
+                    TeamsContainerView(firstTeam: match.firstTeam(), secondTeam: match.secondTeam())
                         .padding(.vertical, 18.5)
                         .padding(.horizontal, 73.5)
                 }
@@ -34,18 +34,12 @@ struct MatchCardView: View {
                     .frame(height: 1)
                     .background(ColorPalette.dividerBackground)
                 
-                LeagueContainerView(leagueName: "League + serie")
+                LeagueContainerView(leagueName: "\(match.league.name) \(match.serie.full_name)")
                     .padding(.vertical, 8)
                     .padding(.leading, 16)
                     .frame(height: 32)
             }
         }
         .cornerRadius(radius: 16, corner: .allCorners)
-    }
-}
-
-struct MatchCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        MatchCardView(timeText: "Hoje, 21:00", isLive: true)
     }
 }

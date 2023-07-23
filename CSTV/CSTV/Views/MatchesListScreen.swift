@@ -24,7 +24,7 @@ struct MatchesListScreen: View {
                         VStack(spacing: 24) {
                             ForEach(matchesViewModel.matchesList, id: \.id) { match in
                                 NavigationLink(value: match) {
-                                    MatchCardView(timeText: match.begin_at, isLive: false)
+                                    MatchCardView(match: match, isLive: false)
                                 }
                             }
                         }
@@ -40,7 +40,7 @@ struct MatchesListScreen: View {
             .navigationBarTitleDisplayMode(.large)
             .navigationTitle("Partidas")
             .navigationDestination(for: Match.self) { match in
-                MatchDetailScreen()
+                MatchDetailScreen(match: match)
             }
         }
         .task {

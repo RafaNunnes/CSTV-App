@@ -9,15 +9,16 @@ import SwiftUI
 
 struct MatchDetailScreen: View {
     @Environment(\.presentationMode) var presentation
+    let match: Match
     
     var body: some View {
         ZStack {
             ColorPalette.appBackground.ignoresSafeArea()
             
             VStack(alignment: .center, spacing: 20) {
-                TeamsContainerView(firstTeamName: "Time 1", secondTeamName: "Time 2")
+                TeamsContainerView(firstTeam: match.firstTeam(), secondTeam: match.secondTeam())
                 
-                Text("Hoje, 21:00")
+                Text(match.begin_at)
                     .foregroundColor(ColorPalette.textPrimary)
                 
                 ScrollView(showsIndicators: false) {
@@ -26,7 +27,7 @@ struct MatchDetailScreen: View {
             }
             .padding(.top, 24)
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("League + serie")
+            .navigationTitle("\(match.league.name) \(match.serie.full_name)")
             .navigationBarBackButtonHidden()
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -40,10 +41,3 @@ struct MatchDetailScreen: View {
     }
 }
 
-struct MatchDetailScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            MatchDetailScreen()
-        }
-    }
-}

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TeamsContainerView: View {
-    var firstTeamName: String
-    var secondTeamName: String
+    var firstTeam: Team?
+    var secondTeam: Team?
     
     var body: some View {
         HStack(alignment: .top) {
-            TeamView(teamName: firstTeamName)
+            TeamView(team: firstTeam)
             
             Text("VS")
                 .padding(.horizontal, 20)
@@ -21,15 +21,7 @@ struct TeamsContainerView: View {
                 .foregroundColor(ColorPalette.subtitle)
                 .fixedSize()
             
-            TeamView(teamName: secondTeamName)
+            TeamView(team: secondTeam)
         }
-    }
-}
-
-struct TeamsContainerView_Previews: PreviewProvider {
-    static var previews: some View {
-        TeamsContainerView(firstTeamName: "Team 1", secondTeamName: "Team 2")
-            .padding()
-            .background(ColorPalette.cardBackground)
     }
 }

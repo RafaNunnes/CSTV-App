@@ -28,7 +28,7 @@ class MatchViewModel: ObservableObject {
         // Fetch upcoming matches
         resultMatchList.append(contentsOf: await pandaScore.sendRequest(type: .UpcomingMatches))
         
-        self.matchesList = resultMatchList
+        self.matchesList = resultMatchList.filter({$0.opponents.count > 1})
         
         isSearching = false
     }
