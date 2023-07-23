@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct MainAppView: View {
+    @State var isSplashLoading: Bool = true
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        if isSplashLoading {
+            SplashScreen(isActive: $isSplashLoading)
+        } else {
+            ZStack {
+                ColorPalette.appBackground.ignoresSafeArea()
+                MatchesListScreen()
+            }
         }
-        .padding()
     }
 }
 
