@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct MainAppView: View {
+    @State var isSplashLoading: Bool = true
+    
     init() {
         Theme.navigationBarColors(background: ColorPalette.appBackground.toUIColor(), titleColor: ColorPalette.textPrimary.toUIColor())
     }
     
     var body: some View {
-        ZStack {
-            ColorPalette.appBackground.ignoresSafeArea()
-            MatchesListScreen()
+        if isSplashLoading {
+            SplashScreen(isActive: $isSplashLoading)
+        } else {
+            ZStack {
+                ColorPalette.appBackground.ignoresSafeArea()
+                MatchesListScreen()
+            }
         }
     }
 }
