@@ -16,7 +16,7 @@ struct MatchesListScreen: View {
         NavigationStack(path: $path) {
             VStack(alignment: .leading, spacing: 0) {
                 Text("Partidas")
-                    .font(Font.system(size: 32, weight: .bold))
+                    .font(Fonts.largeTitle)
                     .foregroundColor(ColorPalette.textPrimary)
                     .padding(.leading, 24)
                     .padding(.top, 24)

@@ -24,6 +24,7 @@ struct MatchDetailScreen: View {
                     
                     Text(viewModel.getMatchDate())
                         .foregroundColor(ColorPalette.textPrimary)
+                        .font(Fonts.boldLargeLabel)
                     if viewModel.isSearching {
                         Spacer()
                         CustomProgressView()
@@ -60,6 +61,9 @@ struct MatchDetailScreen: View {
             
             Text("\(viewModel.match.league.name) \(viewModel.match.serie.full_name)")
                 .foregroundColor(ColorPalette.textPrimary)
+                .font(Fonts.smallTitle)
+                .lineLimit(2)
+                .truncationMode(.tail)
                 .padding(.top, 32)
                 .padding(.horizontal, 48)
         }

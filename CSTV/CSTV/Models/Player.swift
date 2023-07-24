@@ -13,5 +13,4 @@ struct Player: Codable {
     let last_name: String?
     let name: String
     let id: Int
-    let slug: String?
 }

@@ -85,11 +85,13 @@ struct PlayerCardView: View {
                         .lineLimit(0)
                         .truncationMode(.tail)
                         .foregroundColor(ColorPalette.textPrimary)
+                        .font(Fonts.boldSmallBody)
                     Text(((player.first_name ?? player.name) + " " + (player.last_name ?? "")))
                         .minimumScaleFactor(0.5)
                         .lineLimit(0)
                         .truncationMode(.tail)
                         .foregroundColor(ColorPalette.textSecondary)
+                        .font(Fonts.largeLabel)
                 }
                 .padding(cardOrientation.verticalAlignment, 8)
                 .scaleEffect(x: cardOrientation.scaleEffect)

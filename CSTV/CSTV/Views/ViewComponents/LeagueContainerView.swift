@@ -39,6 +39,7 @@ struct LeagueContainerView: View {
                 .frame(width: 16, height: 16)
             Text("\(match.league.name) \(match.serie.full_name)")
                 .foregroundColor(ColorPalette.textPrimary)
+                .font(Fonts.smallLabel)
                 .lineLimit(0)
         }
     }

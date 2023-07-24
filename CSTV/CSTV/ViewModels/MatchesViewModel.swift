@@ -27,12 +27,12 @@ class MatchesViewModel: ObservableObject {
         
         // Fetch running matches
         if let matches: [Match] = await pandaScore.sendRequest(type: .RunningMatches) {
-            runningMatchesList =  getValidMatches(matches: matches)
+            runningMatchesList =  getSortedValidMatches(matches: matches)
         }
         
         // Fetch upcoming matches
         if let matches: [Match] = await pandaScore.sendRequest(type: .UpcomingMatches) {
-            upcomingMatchesList = getValidMatches(matches: matches)
+            upcomingMatchesList = getSortedValidMatches(matches: matches)
         }
         
         if showProgress {
@@ -40,11 +40,21 @@ class MatchesViewModel: ObservableObject {
         }
     }
     
-    private func getValidMatches(matches: [Match]) -> [Match] {
+    private func getSortedValidMatches(matches: [Match]) -> [Match] {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
         return matches.filter({ match in
             match.opponents.count > 1
         }).sorted(by: { firstMatch, secondMatch in
-            firstMatch.begin_at ?? "" < secondMatch.begin_at ?? ""
+            guard let firstMatchTime = firstMatch.begin_at, let secondMatchTime = secondMatch.begin_at else { return true
+            }
+            
+            guard let firstDate = formatter.date(from: firstMatchTime), let secondDate = formatter.date(from: secondMatchTime) else {
+                return true
+            }
+            
+            return firstDate < secondDate
         })
     }
 }

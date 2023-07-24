@@ -22,6 +22,7 @@ struct MatchTimeView: View {
     var body: some View {
         Text(timeInputText)
             .foregroundColor(ColorPalette.textPrimary)
+            .font(Fonts.boldSmallLabel)
             .padding(8)
             .background(backgroundColor)
             .cornerRadius(radius: 16, corner: .bottomLeft)

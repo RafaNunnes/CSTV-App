@@ -37,8 +37,9 @@ struct TeamView: View {
         VStack(alignment: .center, spacing: 10) {
             avatarImage
                 .frame(width: 60, height: 60)
-            Text(team?.name ?? team?.slug ?? "")
+            Text(team?.name ?? "")
                 .foregroundColor(ColorPalette.textPrimary)
+                .font(Fonts.mediumLabel)
                 .multilineTextAlignment(.center)
                 .lineLimit(3)
                 .frame(maxWidth: 60)

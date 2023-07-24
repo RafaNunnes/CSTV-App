@@ -49,13 +49,15 @@ class MatchDetailViewModel: ObservableObject {
     
     public func getMatchDate() -> String {
         guard let matchDate = match.begin_at else {
-            return ""
+            return "A definir"
         }
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
         if let date = formatter.date(from: matchDate) {
+            formatter.timeZone = TimeZone.current
+            
             let calendar = Calendar.current
             let isToday = calendar.isDateInToday(date)
             let nextWeekendDate: Date = calendar.nextWeekend(startingAfter: date)?.start ?? .distantPast

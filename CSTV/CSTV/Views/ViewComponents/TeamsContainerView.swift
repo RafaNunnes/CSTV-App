@@ -16,9 +16,10 @@ struct TeamsContainerView: View {
             TeamView(team: firstTeam)
             
             Text("VS")
+                .foregroundColor(ColorPalette.subtitle)
+                .font(Fonts.largeLabel)
                 .padding(.horizontal, 20)
                 .padding(.top, 34)
-                .foregroundColor(ColorPalette.subtitle)
                 .fixedSize()
             
             TeamView(team: secondTeam)
