@@ -22,7 +22,12 @@ struct MatchesListScreen: View {
                 } else {
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 24) {
-                            ForEach(matchesViewModel.matchesList, id: \.id) { match in
+                            ForEach(matchesViewModel.runningMatchesList, id: \.id) { match in
+                                NavigationLink(value: match) {
+                                    MatchCardView(match: match, isLive: true)
+                                }
+                            }
+                            ForEach(matchesViewModel.upcomingMatchesList, id: \.id) { match in
                                 NavigationLink(value: match) {
                                     MatchCardView(match: match, isLive: false)
                                 }

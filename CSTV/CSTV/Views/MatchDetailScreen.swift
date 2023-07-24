@@ -18,7 +18,7 @@ struct MatchDetailScreen: View {
             VStack(alignment: .center, spacing: 20) {
                 TeamsContainerView(firstTeam: match.firstTeam(), secondTeam: match.secondTeam())
                 
-                Text(match.begin_at)
+                Text(match.getMatchDate())
                     .foregroundColor(ColorPalette.textPrimary)
                 
                 ScrollView(showsIndicators: false) {

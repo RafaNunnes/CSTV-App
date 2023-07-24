@@ -22,7 +22,7 @@ struct MatchCardView: View {
                     
                     HStack(alignment: .top) {
                         Spacer()
-                        MatchTimeView(timeText: match.begin_at, isLive: isLive)
+                        MatchTimeView(timeText: match.getMatchDate(), isLive: isLive)
                     }
                     .frame(height: 25)
                     TeamsContainerView(firstTeam: match.firstTeam(), secondTeam: match.secondTeam())
@@ -39,6 +39,7 @@ struct MatchCardView: View {
                     .padding(.leading, 16)
                     .frame(height: 32)
             }
+            .fixedSize(horizontal: false, vertical: true)
         }
         .cornerRadius(radius: 16, corner: .allCorners)
     }

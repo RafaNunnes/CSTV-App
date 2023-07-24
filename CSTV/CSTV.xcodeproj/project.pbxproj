@@ -10,7 +10,6 @@
 		334BC5102A6AE29D00AD0269 /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334BC50F2A6AE29D00AD0269 /* RoundedCornerShape.swift */; };
 		334BC5132A6AE3CA00AD0269 /* MatchTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334BC5122A6AE3CA00AD0269 /* MatchTimeView.swift */; };
 		334BC5152A6AE3E300AD0269 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334BC5142A6AE3E300AD0269 /* ViewExtension.swift */; };
-		3368FD512A6A3FEE000FED0C /* RoundedShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368FD502A6A3FEE000FED0C /* RoundedShapeView.swift */; };
 		3368FD532A6A48B0000FED0C /* TeamsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368FD522A6A48B0000FED0C /* TeamsContainerView.swift */; };
 		3368FD552A6A4BC1000FED0C /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368FD542A6A4BC1000FED0C /* TeamView.swift */; };
 		3368FD572A6A4D3B000FED0C /* MatchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368FD562A6A4D3B000FED0C /* MatchCardView.swift */; };
@@ -43,7 +42,6 @@
 		334BC50F2A6AE29D00AD0269 /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
 		334BC5122A6AE3CA00AD0269 /* MatchTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTimeView.swift; sourceTree = "<group>"; };
 		334BC5142A6AE3E300AD0269 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
-		3368FD502A6A3FEE000FED0C /* RoundedShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShapeView.swift; sourceTree = "<group>"; };
 		3368FD522A6A48B0000FED0C /* TeamsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsContainerView.swift; sourceTree = "<group>"; };
 		3368FD542A6A4BC1000FED0C /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		3368FD562A6A4D3B000FED0C /* MatchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardView.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				334BC50F2A6AE29D00AD0269 /* RoundedCornerShape.swift */,
-				3368FD502A6A3FEE000FED0C /* RoundedShapeView.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -306,7 +303,6 @@
 				334BC5132A6AE3CA00AD0269 /* MatchTimeView.swift in Sources */,
 				33FAF5F22A6C86CE00F8325F /* Theme.swift in Sources */,
 				3368FD552A6A4BC1000FED0C /* TeamView.swift in Sources */,
-				3368FD512A6A3FEE000FED0C /* RoundedShapeView.swift in Sources */,
 				33C9EB902A6A2C8C000D44D6 /* ColorPalette.swift in Sources */,
 				33FAF5F02A6C79D900F8325F /* MatchesViewModel.swift in Sources */,
 				33FAF5EA2A6B3A2100F8325F /* Player.swift in Sources */,
