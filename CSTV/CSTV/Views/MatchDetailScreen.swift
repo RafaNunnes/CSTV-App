@@ -13,39 +13,55 @@ struct MatchDetailScreen: View {
     @StateObject var viewModel: MatchDetailViewModel
     
     var body: some View {
-        ZStack {
-            ColorPalette.appBackground.ignoresSafeArea()
+        VStack(alignment: .center, spacing: 0) {
+            customNavBar
             
-            VStack(alignment: .center, spacing: 20) {
-                TeamsContainerView(firstTeam: viewModel.firstTeam(), secondTeam: viewModel.secondTeam())
+            ZStack {
+                ColorPalette.appBackground.ignoresSafeArea()
                 
-                Text(viewModel.getMatchDate())
-                    .foregroundColor(ColorPalette.textPrimary)
-                if viewModel.isSearching {
-                    Spacer()
-                    CustomProgressView()
-                    Spacer()
-                } else {
-                    ScrollView(showsIndicators: false) {
-                        PlayersCardsListView(viewModel: viewModel)
+                VStack(alignment: .center, spacing: 20) {
+                    TeamsContainerView(firstTeam: viewModel.firstTeam(), secondTeam: viewModel.secondTeam())
+                    
+                    Text(viewModel.getMatchDate())
+                        .foregroundColor(ColorPalette.textPrimary)
+                    if viewModel.isSearching {
+                        Spacer()
+                        CustomProgressView()
+                        Spacer()
+                    } else {
+                        ScrollView(showsIndicators: false) {
+                            PlayersCardsListView(viewModel: viewModel)
+                        }
                     }
                 }
+                .padding(.top, 24)
             }
-            .padding(.top, 24)
+            .navigationBarBackButtonHidden()
+            .task {
+                await viewModel.fetchPlayersList()
+            }
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("\(viewModel.match.league.name) \(viewModel.match.serie.full_name)")
-        .navigationBarBackButtonHidden()
-        .toolbar(content: {
-            ToolbarItem(placement: .navigationBarLeading) {
+        .background(ColorPalette.appBackground.ignoresSafeArea())
+    }
+    
+    private var customNavBar: some View {
+        ZStack(alignment: .center) {
+            HStack(alignment: .bottom, spacing: 0) {
                 Image("CustomBackButtonIcon")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .padding(.leading, 24)
+                    .padding(.top, 32)
                     .onTapGesture {
                         self.presentation.wrappedValue.dismiss()
                     }
+                Spacer()
             }
-        })
-        .task {
-            await viewModel.fetchPlayersList()
+            
+            Text("\(viewModel.match.league.name) \(viewModel.match.serie.full_name)")
+                .foregroundColor(ColorPalette.textPrimary)
+                .padding(.top, 32)
+                .padding(.horizontal, 48)
         }
     }
 }
