@@ -7,9 +7,10 @@
 
 import Foundation
 
-class MatchViewModel: ObservableObject {
+class MatchesViewModel: ObservableObject {
     @Published public var runningMatchesList: [Match] = []
     @Published public var upcomingMatchesList: [Match] = []
+    
     @Published var isSearching = false
     
     private let pandaScore: PandaScoreInterface = PandaScoreInterface()

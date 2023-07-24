@@ -18,7 +18,8 @@ struct TeamView: View {
                 .resizable()
                 .placeholder { progress in
                     ZStack {
-                        RoundedCornerShape(radius: 30, corner: .allCorners).fill(ColorPalette.emptyBackground)
+                        RoundedCornerShape(radius: 30, corner: .allCorners)
+                            .fill(ColorPalette.emptyBackground)
                         if !progress.isFinished {
                             ProgressView()
                         }
@@ -26,7 +27,8 @@ struct TeamView: View {
                 }
         } else {
             ZStack {
-                RoundedCornerShape(radius: 30, corner: .allCorners).fill(ColorPalette.emptyBackground)
+                RoundedCornerShape(radius: 30, corner: .allCorners)
+                    .fill(ColorPalette.emptyBackground)
             }
         }
     }

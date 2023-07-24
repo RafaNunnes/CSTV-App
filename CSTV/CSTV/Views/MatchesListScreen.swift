@@ -10,26 +10,27 @@ import SwiftUI
 struct MatchesListScreen: View {
     @State private var path: NavigationPath = NavigationPath()
     
-    @ObservedObject private var matchesViewModel: MatchViewModel = MatchViewModel()
+    @StateObject private var viewModel: MatchesViewModel = MatchesViewModel()
     
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {
                 ColorPalette.appBackground.ignoresSafeArea()
                 
-                if matchesViewModel.isSearching {
+                if viewModel.isSearching {
                     ProgressView()
                 } else {
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 24) {
-                            ForEach(matchesViewModel.runningMatchesList, id: \.id) { match in
+                            ForEach(viewModel.runningMatchesList, id: \.id) { match in
                                 NavigationLink(value: match) {
-                                    MatchCardView(match: match, isLive: true)
+                                    MatchCardView(viewModel: MatchDetailViewModel(match: match), isLive: true)
                                 }
                             }
-                            ForEach(matchesViewModel.upcomingMatchesList, id: \.id) { match in
+                            
+                            ForEach(viewModel.upcomingMatchesList, id: \.id) { match in
                                 NavigationLink(value: match) {
-                                    MatchCardView(match: match, isLive: false)
+                                    MatchCardView(viewModel: MatchDetailViewModel(match: match), isLive: false)
                                 }
                             }
                         }
@@ -38,18 +39,18 @@ struct MatchesListScreen: View {
                         .padding(.horizontal, 24)
                     }
                     .refreshable {
-                        await matchesViewModel.refresh()
+                        await viewModel.refresh()
                     }
                 }
             }
             .navigationBarTitleDisplayMode(.large)
             .navigationTitle("Partidas")
             .navigationDestination(for: Match.self) { match in
-                MatchDetailScreen(match: match)
+                MatchDetailScreen(viewModel: MatchDetailViewModel(match: match))
             }
         }
         .task {
-            await matchesViewModel.fetchMatchesList()
+            await viewModel.fetchMatchesList()
         }
     }
 }

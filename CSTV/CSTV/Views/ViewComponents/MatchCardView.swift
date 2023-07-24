@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MatchCardView: View {
-    let match: Match
+    let viewModel: MatchDetailViewModel
     let isLive: Bool
     
     var body: some View {
@@ -22,10 +22,10 @@ struct MatchCardView: View {
                     
                     HStack(alignment: .top) {
                         Spacer()
-                        MatchTimeView(timeText: match.getMatchDate(), isLive: isLive)
+                        MatchTimeView(timeText: viewModel.getMatchDate(), isLive: isLive)
                     }
                     .frame(height: 25)
-                    TeamsContainerView(firstTeam: match.firstTeam(), secondTeam: match.secondTeam())
+                    TeamsContainerView(firstTeam: viewModel.firstTeam(), secondTeam: viewModel.secondTeam())
                         .padding(.vertical, 18.5)
                         .padding(.horizontal, 73.5)
                 }
@@ -34,7 +34,7 @@ struct MatchCardView: View {
                     .frame(height: 1)
                     .background(ColorPalette.dividerBackground)
                 
-                LeagueContainerView(leagueName: "\(match.league.name) \(match.serie.full_name)")
+                LeagueContainerView(match: viewModel.match)
                     .padding(.vertical, 8)
                     .padding(.leading, 16)
                     .frame(height: 32)

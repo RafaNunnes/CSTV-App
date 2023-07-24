@@ -6,26 +6,40 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct LeagueContainerView: View {
-    var leagueName: String
+    var match: Match
+    
+    @ViewBuilder
+    private var avatarImage: some View {
+        if let leagueImage = match.league.image_url {
+            KFImage(URL(string: leagueImage))
+                .resizable()
+                .placeholder { progress in
+                    ZStack {
+                        RoundedCornerShape(radius: 8, corner: .allCorners)
+                            .fill(ColorPalette.emptyBackground)
+                        if !progress.isFinished {
+                            ProgressView()
+                        }
+                    }
+                }
+        } else {
+            ZStack {
+                RoundedCornerShape(radius: 8, corner: .allCorners)
+                    .fill(ColorPalette.emptyBackground)
+            }
+        }
+    }
     
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            RoundedCornerShape(radius: 8, corner: .allCorners)
-                .fill(ColorPalette.emptyBackground)
+            avatarImage
                 .frame(width: 16, height: 16)
-            Text(leagueName)
+            Text("\(match.league.name) \(match.serie.full_name)")
                 .foregroundColor(ColorPalette.textPrimary)
                 .lineLimit(0)
         }
-    }
-}
-
-struct LeagueContainerView_Previews: PreviewProvider {
-    static var previews: some View {
-        LeagueContainerView(leagueName: "League + serie")
-            .padding()
-            .background(ColorPalette.cardBackground)
     }
 }

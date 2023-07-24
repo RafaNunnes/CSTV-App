@@ -9,16 +9,17 @@ import SwiftUI
 
 struct MatchDetailScreen: View {
     @Environment(\.presentationMode) var presentation
-    let match: Match
+    
+    @StateObject var viewModel: MatchDetailViewModel
     
     var body: some View {
         ZStack {
             ColorPalette.appBackground.ignoresSafeArea()
             
             VStack(alignment: .center, spacing: 20) {
-                TeamsContainerView(firstTeam: match.firstTeam(), secondTeam: match.secondTeam())
+                TeamsContainerView(firstTeam: viewModel.firstTeam(), secondTeam: viewModel.secondTeam())
                 
-                Text(match.getMatchDate())
+                Text(viewModel.getMatchDate())
                     .foregroundColor(ColorPalette.textPrimary)
                 
                 ScrollView(showsIndicators: false) {
@@ -27,7 +28,7 @@ struct MatchDetailScreen: View {
             }
             .padding(.top, 24)
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("\(match.league.name) \(match.serie.full_name)")
+            .navigationTitle("\(viewModel.match.league.name) \(viewModel.match.serie.full_name)")
             .navigationBarBackButtonHidden()
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
