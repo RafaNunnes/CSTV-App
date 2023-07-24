@@ -21,7 +21,7 @@ struct TeamView: View {
                         RoundedCornerShape(radius: 30, corner: .allCorners)
                             .fill(ColorPalette.emptyBackground)
                         if !progress.isFinished {
-                            ProgressView()
+                            CustomProgressView()
                         }
                     }
                 }

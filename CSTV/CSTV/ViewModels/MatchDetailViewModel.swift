@@ -8,10 +8,35 @@
 import Foundation
 
 class MatchDetailViewModel: ObservableObject {
-    @Published var match: Match
+    @Published var isSearching = false
+    
+    let match: Match
+    var firstTeamPlayers: [Player] = []
+    var secondTeamPlayers: [Player] = []
+    
+    private let pandaScore: PandaScoreInterface = PandaScoreInterface()
     
     init(match: Match) {
         self.match = match
+    }
+    
+    @MainActor
+    public func fetchPlayersList() async {
+        isSearching = true
+        
+        // Fetch first team players
+        if let firstTeamID: Int = match.opponents.first?.opponent.id {
+            let teamDetail: TeamDetail? = await pandaScore.sendRequest(type: .TeamDetail(id: firstTeamID))
+            firstTeamPlayers = teamDetail?.players ?? []
+        }
+        
+        // Fetch second team players
+        if match.opponents.count > 1, let secondTeamID: Int = match.opponents.last?.opponent.id {
+            let teamDetail: TeamDetail? = await pandaScore.sendRequest(type: .TeamDetail(id: secondTeamID))
+            secondTeamPlayers = teamDetail?.players ?? []
+        }
+        
+        isSearching = false
     }
     
     public func firstTeam() -> Team? {
@@ -23,10 +48,14 @@ class MatchDetailViewModel: ObservableObject {
     }
     
     public func getMatchDate() -> String {
+        guard let matchDate = match.begin_at else {
+            return ""
+        }
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
-        if let date = formatter.date(from: match.begin_at) {
+        if let date = formatter.date(from: matchDate) {
             let calendar = Calendar.current
             let isToday = calendar.isDateInToday(date)
             let nextWeekendDate: Date = calendar.nextWeekend(startingAfter: date)?.start ?? .distantPast
@@ -44,14 +73,14 @@ class MatchDetailViewModel: ObservableObject {
                 case 5: return "Qui, \(formatter.string(from: date))"
                 case 6: return "Sex, \(formatter.string(from: date))"
                 case 7: return "Sab, \(formatter.string(from: date))"
-                default: return match.begin_at
+                default: return matchDate
                 }
             } else {
                 formatter.dateFormat = "dd.MM HH:mm"
                 return formatter.string(from: date)
             }
         } else {
-            return match.begin_at
+            return matchDate
         }
     }
 }

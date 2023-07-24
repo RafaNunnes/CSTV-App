@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "1BCBC71C-460E-4951-AB39-F9B9DFF552A1"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CSTV/Views/ViewComponents/MatchCardView.swift"
@@ -16,6 +16,70 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5D8B0D49-8DE9-47BF-9F9C-A30F87846131"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CSTV/Application/Handlers/APIHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "sendRequest(request:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5D8B0D49-8DE9-47BF-9F9C-A30F87846131 - 241b58ab82683a80"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for static CSTV.APIHandler.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(request: Foundation.URLRequest) async -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "CSTV"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rafaelnunesbezerradias/Documents/CSTV-App/CSTV/CSTV/Application/Handlers/APIHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  uuid = "5D8B0D49-8DE9-47BF-9F9C-A30F87846131 - 241b58ab82683a80"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for static CSTV.APIHandler.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(request: Foundation.URLRequest) async -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "CSTV"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rafaelnunesbezerradias/Documents/CSTV-App/CSTV/CSTV/Application/Handlers/APIHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "552">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "549C2BDE-5A71-43B3-A9CD-BC750C89AA2B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CSTV/Views/ViewComponents/PlayerCardView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

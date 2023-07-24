@@ -22,6 +22,8 @@
 		337667D92A6DC34C003482AD /* PandaScoreInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337667D82A6DC34C003482AD /* PandaScoreInterface.swift */; };
 		337667DC2A6DE505003482AD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 337667DB2A6DE505003482AD /* Kingfisher */; };
 		337667DE2A6E1AF9003482AD /* MatchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337667DD2A6E1AF9003482AD /* MatchDetailViewModel.swift */; };
+		337667E02A6E263F003482AD /* TeamDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337667DF2A6E263F003482AD /* TeamDetail.swift */; };
+		337667E22A6E48F5003482AD /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337667E12A6E48F5003482AD /* CustomProgressView.swift */; };
 		33C9EB902A6A2C8C000D44D6 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9EB8F2A6A2C8C000D44D6 /* ColorPalette.swift */; };
 		33C9EB932A6A3614000D44D6 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9EB922A6A3614000D44D6 /* ColorExtension.swift */; };
 		33F5A0192A6A045700123EB9 /* CSTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5A0182A6A045700123EB9 /* CSTVApp.swift */; };
@@ -54,6 +56,8 @@
 		337667D62A6DC1C8003482AD /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		337667D82A6DC34C003482AD /* PandaScoreInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PandaScoreInterface.swift; sourceTree = "<group>"; };
 		337667DD2A6E1AF9003482AD /* MatchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailViewModel.swift; sourceTree = "<group>"; };
+		337667DF2A6E263F003482AD /* TeamDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetail.swift; sourceTree = "<group>"; };
+		337667E12A6E48F5003482AD /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		33C9EB8F2A6A2C8C000D44D6 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		33C9EB922A6A3614000D44D6 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		33F5A0152A6A045700123EB9 /* CSTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,13 +178,14 @@
 			isa = PBXGroup;
 			children = (
 				334BC5112A6AE31200AD0269 /* Shapes */,
-				3368FD542A6A4BC1000FED0C /* TeamView.swift */,
-				3368FD522A6A48B0000FED0C /* TeamsContainerView.swift */,
 				3368FD562A6A4D3B000FED0C /* MatchCardView.swift */,
+				3368FD522A6A48B0000FED0C /* TeamsContainerView.swift */,
+				3368FD542A6A4BC1000FED0C /* TeamView.swift */,
 				3368FD582A6A5578000FED0C /* LeagueContainerView.swift */,
 				334BC5122A6AE3CA00AD0269 /* MatchTimeView.swift */,
-				33FAF5E52A6B1DE800F8325F /* PlayerCardView.swift */,
 				33FAF5E72A6B377E00F8325F /* PlayersCardsListView.swift */,
+				33FAF5E52A6B1DE800F8325F /* PlayerCardView.swift */,
+				337667E12A6E48F5003482AD /* CustomProgressView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 				337667CB2A6D9EF8003482AD /* Serie.swift */,
 				337667CD2A6DA162003482AD /* League.swift */,
 				33FAF5EB2A6C77FA00F8325F /* Match.swift */,
+				337667DF2A6E263F003482AD /* TeamDetail.swift */,
 				33FAF5ED2A6C784000F8325F /* Team.swift */,
 				33FAF5E92A6B3A2100F8325F /* Player.swift */,
 				337667D12A6DAF28003482AD /* Opponent.swift */,
@@ -283,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				337667E02A6E263F003482AD /* TeamDetail.swift in Sources */,
 				33F5A01B2A6A045700123EB9 /* MainAppView.swift in Sources */,
 				33FAF5E62A6B1DE800F8325F /* PlayerCardView.swift in Sources */,
 				337667D22A6DAF28003482AD /* Opponent.swift in Sources */,
@@ -290,6 +297,7 @@
 				337667D72A6DC1C8003482AD /* Logger.swift in Sources */,
 				337667CC2A6D9EF8003482AD /* Serie.swift in Sources */,
 				33F5A02D2A6A21F400123EB9 /* MatchesListScreen.swift in Sources */,
+				337667E22A6E48F5003482AD /* CustomProgressView.swift in Sources */,
 				33F5A0312A6A226E00123EB9 /* MatchDetailScreen.swift in Sources */,
 				33F5A0192A6A045700123EB9 /* CSTVApp.swift in Sources */,
 				337667D92A6DC34C003482AD /* PandaScoreInterface.swift in Sources */,

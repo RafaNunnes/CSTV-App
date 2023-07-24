@@ -21,7 +21,7 @@ struct LeagueContainerView: View {
                         RoundedCornerShape(radius: 8, corner: .allCorners)
                             .fill(ColorPalette.emptyBackground)
                         if !progress.isFinished {
-                            ProgressView()
+                            CustomProgressView()
                         }
                     }
                 }

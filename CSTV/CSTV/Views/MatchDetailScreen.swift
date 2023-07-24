@@ -21,23 +21,31 @@ struct MatchDetailScreen: View {
                 
                 Text(viewModel.getMatchDate())
                     .foregroundColor(ColorPalette.textPrimary)
-                
-                ScrollView(showsIndicators: false) {
-                    PlayersCardsListView()
+                if viewModel.isSearching {
+                    Spacer()
+                    CustomProgressView()
+                    Spacer()
+                } else {
+                    ScrollView(showsIndicators: false) {
+                        PlayersCardsListView(viewModel: viewModel)
+                    }
                 }
             }
             .padding(.top, 24)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("\(viewModel.match.league.name) \(viewModel.match.serie.full_name)")
-            .navigationBarBackButtonHidden()
-            .toolbar(content: {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Image("CustomBackButtonIcon")
-                        .onTapGesture {
-                            self.presentation.wrappedValue.dismiss()
-                        }
-                }
-            })
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("\(viewModel.match.league.name) \(viewModel.match.serie.full_name)")
+        .navigationBarBackButtonHidden()
+        .toolbar(content: {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Image("CustomBackButtonIcon")
+                    .onTapGesture {
+                        self.presentation.wrappedValue.dismiss()
+                    }
+            }
+        })
+        .task {
+            await viewModel.fetchPlayersList()
         }
     }
 }

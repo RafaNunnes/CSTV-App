@@ -7,8 +7,11 @@
 
 import Foundation
 
-struct Player {
+struct Player: Codable {
+    let first_name: String?
+    let image_url: String?
+    let last_name: String?
     let name: String
-    let nickName: String
-    let photoPath: String
+    let id: Int
+    let slug: String?
 }

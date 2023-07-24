@@ -9,7 +9,7 @@ import Foundation
 
 struct Match: Codable, Hashable {
     let id: Int
-    let begin_at: String
+    let begin_at: String?
     let league: League
     let serie: Serie
     let opponents: [Opponent]

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 enum PlayerCardOrientation {
     case Left
@@ -17,6 +18,15 @@ enum PlayerCardOrientation {
             return .trailing
         case .Right:
             return .leading
+        }
+    }
+    
+    var verticalAlignment: SwiftUI.Edge.Set {
+        switch self {
+        case .Left:
+            return .leading
+        case .Right:
+            return .trailing
         }
     }
     
@@ -33,6 +43,28 @@ enum PlayerCardOrientation {
 struct PlayerCardView: View {
     var cardOrientation: PlayerCardOrientation
     var player: Player
+    
+    @ViewBuilder
+    private var avatarImage: some View {
+        if let playerImage = player.image_url {
+            KFImage(URL(string: playerImage))
+                .resizable()
+                .placeholder { progress in
+                    ZStack {
+                        Rectangle()
+                            .fill(ColorPalette.emptyBackground)
+                        if !progress.isFinished {
+                            CustomProgressView()
+                        }
+                    }
+                }
+        } else {
+            ZStack {
+                Rectangle()
+                    .fill(ColorPalette.emptyBackground)
+            }
+        }
+    }
 
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -43,28 +75,30 @@ struct PlayerCardView: View {
                 .padding(.top, 4)
                 
             HStack(alignment: .bottom, spacing: 16) {
-                RoundedCornerShape(radius: 8, corner: .allCorners)
-                    .fill(ColorPalette.emptyBackground)
+                avatarImage
                     .frame(width: 49, height: 49)
+                    .cornerRadius(radius: 8, corner: .allCorners)
                 
                 VStack(alignment: cardOrientation.alignment, spacing: 0) {
-                    Text(player.nickName)
-                        .foregroundColor(ColorPalette.textPrimary)
                     Text(player.name)
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(0)
+                        .truncationMode(.tail)
+                        .foregroundColor(ColorPalette.textPrimary)
+                    Text(((player.first_name ?? player.name) + " " + (player.last_name ?? "")))
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(0)
+                        .truncationMode(.tail)
                         .foregroundColor(ColorPalette.textSecondary)
                 }
+                .padding(cardOrientation.verticalAlignment, 8)
                 .scaleEffect(x: cardOrientation.scaleEffect)
             }
             .padding(.leading, 12)
             .padding(.bottom, 8)
         }
         .scaleEffect(x: cardOrientation.scaleEffect)
-    }
-}
-
-struct PlayerCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlayerCardView(cardOrientation: .Left, player: Player(name: "Nome do Jogador", nickName: "Nickname", photoPath: ""))
-            .frame(width: 174, height: 54)
+        .frame(height: 58)
+        .fixedSize(horizontal: false, vertical: true)
     }
 }

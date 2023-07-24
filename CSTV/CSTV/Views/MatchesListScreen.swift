@@ -18,7 +18,7 @@ struct MatchesListScreen: View {
                 ColorPalette.appBackground.ignoresSafeArea()
                 
                 if viewModel.isSearching {
-                    ProgressView()
+                    CustomProgressView()
                 } else {
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 24) {

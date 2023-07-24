@@ -11,5 +11,5 @@ struct Team: Codable {
     let id: Int
     let image_url: String?
     let name: String
-    let slug: String
+    let slug: String?
 }

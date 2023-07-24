@@ -8,33 +8,20 @@
 import SwiftUI
 
 struct PlayersCardsListView: View {
-    let players: [Player] = [
-        Player(name: "Rafael", nickName: "bzradias", photoPath: ""),
-        Player(name: "João", nickName: "Jon", photoPath: ""),
-        Player(name: "Pedro", nickName: "Peter", photoPath: ""),
-        Player(name: "Mateus", nickName: "Matt", photoPath: ""),
-        Player(name: "Lucas", nickName: "Lukas", photoPath: "")]
-    
-    private let columnItens: [GridItem] = [
-        GridItem(.flexible(), spacing: 13),
-        GridItem(.flexible(), spacing: 13)
-    ]
+    @ObservedObject var viewModel: MatchDetailViewModel
     
     var body: some View {
-        LazyVGrid(columns: columnItens, alignment: .center, spacing: 13) {
-            ForEach((0..<players.count), id: \.self) { index in
-                PlayerCardView(cardOrientation: cardOrientationByIndex(index), player: players[index])
+        HStack(alignment: .top, spacing: 13) {
+            VStack(spacing: 13) {
+                ForEach(viewModel.firstTeamPlayers, id: \.id) { player in
+                    PlayerCardView(cardOrientation: .Left, player: player)
+                }
+            }
+            VStack(spacing: 13) {
+                ForEach(viewModel.secondTeamPlayers, id: \.id) { player in
+                    PlayerCardView(cardOrientation: .Right, player: player)
+                }
             }
         }
-    }
-    
-    private func cardOrientationByIndex(_ index: Int) -> PlayerCardOrientation {
-        return index % 2 == 0 ? .Left : .Right
-    }
-}
-
-struct PlayersCardsListView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlayersCardsListView()
     }
 }
