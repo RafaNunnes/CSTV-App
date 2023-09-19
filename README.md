@@ -2,9 +2,15 @@
 
 CSTV is an iOS app that allows users to keep track of CS:GO matches happening across various worldwide tournaments.
 
+Main Screen                |  Match Details Screen
+:-------------------------:|:-------------------------:
+![Simulator Screen Shot - iPhone 14 Pro - 2023-09-19 at 13 28 41](https://github.com/RafaNunnes/CSTV-App/assets/14022126/b18f4526-0cb6-4600-95eb-c456a36f00f1) | ![Simulator Screen Shot - iPhone 14 Pro - 2023-09-19 at 13 31 49](https://github.com/RafaNunnes/CSTV-App/assets/14022126/8cb40aca-36fb-4f96-a28c-5b35575be103)
+
+
 ## Features
 
 - The app displays CS:GO matches starting from the current date and provides a comprehensive "match detail" screen that showcases team names, roster, and match time.
+
 
 ## Screens
 
@@ -14,9 +20,11 @@ CSTV consists of the following screens:
 2. **Main Screen**: The matches list screen, where users can view CS:GO matches from different tournaments.
 3. **Match Details Screen**: A detailed view of a selected match, showcasing team information and match timing.
 
+
 ## Data Source
 
 CSTV uses the [PandaScore API](https://pandascore.co/) to list CS:GO matches and fetch match details, providing users with up-to-date information about ongoing tournaments.
+
 
 ## Development Key Points
 
@@ -35,6 +43,7 @@ CSTV uses the [PandaScore API](https://pandascore.co/) to list CS:GO matches and
    3. Despite the similarity of information and the proposed use of MVVM, a ViewModel was used for each of the main screens for the sake of responsibility delegation and code readability.
    4. Some of latest iOS resources (above iOS 15.0) were used, such as Refreshable for Pull-to-refresh, and NavigationPath for navigation between screens, which facilitated code readability and focus on the most relevant parts of the project.
 
+
 ## Installation
 
 To run CSTV on your iOS device, follow these steps:
@@ -43,10 +52,12 @@ To run CSTV on your iOS device, follow these steps:
 2. Open the project in Xcode
 3. Build and run the app on your connected iOS device or simulator.
 
+
 ## Requirements
 
 - iOS 16.0+
 - Xcode 14.0+
+
 
 ## License
 
