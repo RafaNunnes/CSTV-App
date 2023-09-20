@@ -13,7 +13,7 @@ class MatchesViewModel: ObservableObject {
     
     @Published var isSearching = false
     
-    private let pandaScore: PandaScoreInterface = PandaScoreInterface()
+    private let pandaScore: PandaScoreInterface = PandaScoreInterface.shared
     
     public func refresh() async {
         await self.fetchMatchesList(showProgress: false)

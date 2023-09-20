@@ -14,7 +14,7 @@ class MatchDetailViewModel: ObservableObject {
     var firstTeamPlayers: [Player] = []
     var secondTeamPlayers: [Player] = []
     
-    private let pandaScore: PandaScoreInterface = PandaScoreInterface()
+    private let pandaScore: PandaScoreInterface = PandaScoreInterface.shared
     
     init(match: Match) {
         self.match = match

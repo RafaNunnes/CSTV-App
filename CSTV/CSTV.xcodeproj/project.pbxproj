@@ -14,6 +14,10 @@
 		3368FD552A6A4BC1000FED0C /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368FD542A6A4BC1000FED0C /* TeamView.swift */; };
 		3368FD572A6A4D3B000FED0C /* MatchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368FD562A6A4D3B000FED0C /* MatchCardView.swift */; };
 		3368FD592A6A5578000FED0C /* LeagueContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368FD582A6A5578000FED0C /* LeagueContainerView.swift */; };
+		336BCF202ABA07DD000C6756 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 336BCF1F2ABA07DD000C6756 /* FirebaseCrashlytics */; };
+		336BCF222ABA07DD000C6756 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 336BCF212ABA07DD000C6756 /* FirebaseRemoteConfig */; };
+		336BCF242ABA07DD000C6756 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 336BCF232ABA07DD000C6756 /* FirebaseRemoteConfigSwift */; };
+		336BCF262ABA08CF000C6756 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 336BCF252ABA08CF000C6756 /* GoogleService-Info.plist */; };
 		337667CC2A6D9EF8003482AD /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337667CB2A6D9EF8003482AD /* Serie.swift */; };
 		337667CE2A6DA162003482AD /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337667CD2A6DA162003482AD /* League.swift */; };
 		337667D22A6DAF28003482AD /* Opponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337667D12A6DAF28003482AD /* Opponent.swift */; };
@@ -63,6 +67,7 @@
 		3368FD542A6A4BC1000FED0C /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		3368FD562A6A4D3B000FED0C /* MatchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardView.swift; sourceTree = "<group>"; };
 		3368FD582A6A5578000FED0C /* LeagueContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueContainerView.swift; sourceTree = "<group>"; };
+		336BCF252ABA08CF000C6756 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		337667CB2A6D9EF8003482AD /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
 		337667CD2A6DA162003482AD /* League.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
 		337667D12A6DAF28003482AD /* Opponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opponent.swift; sourceTree = "<group>"; };
@@ -110,7 +115,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				336BCF222ABA07DD000C6756 /* FirebaseRemoteConfig in Frameworks */,
+				336BCF242ABA07DD000C6756 /* FirebaseRemoteConfigSwift in Frameworks */,
 				337667DC2A6DE505003482AD /* Kingfisher in Frameworks */,
+				336BCF202ABA07DD000C6756 /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +207,7 @@
 				33F5A02A2A6A162000123EB9 /* Resources */,
 				337667D32A6DB1C2003482AD /* Handlers */,
 				33E42A412A6F2937004ED398 /* Info.plist */,
+				336BCF252ABA08CF000C6756 /* GoogleService-Info.plist */,
 				33F5A0182A6A045700123EB9 /* CSTVApp.swift */,
 			);
 			path = Application;
@@ -285,6 +294,9 @@
 			name = CSTV;
 			packageProductDependencies = (
 				337667DB2A6DE505003482AD /* Kingfisher */,
+				336BCF1F2ABA07DD000C6756 /* FirebaseCrashlytics */,
+				336BCF212ABA07DD000C6756 /* FirebaseRemoteConfig */,
+				336BCF232ABA07DD000C6756 /* FirebaseRemoteConfigSwift */,
 			);
 			productName = CSTV;
 			productReference = 33F5A0152A6A045700123EB9 /* CSTV.app */;
@@ -316,6 +328,7 @@
 			mainGroup = 33F5A00C2A6A045700123EB9;
 			packageReferences = (
 				337667DA2A6DE505003482AD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				336BCF1E2ABA07DD000C6756 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 33F5A0162A6A045700123EB9 /* Products */;
 			projectDirPath = "";
@@ -333,6 +346,7 @@
 			files = (
 				33E42A382A6F288D004ED398 /* Roboto-ThinItalic.ttf in Resources */,
 				33E42A3B2A6F288D004ED398 /* Roboto-Italic.ttf in Resources */,
+				336BCF262ABA08CF000C6756 /* GoogleService-Info.plist in Resources */,
 				33E42A3E2A6F288D004ED398 /* Roboto-Bold.ttf in Resources */,
 				33E42A342A6F288D004ED398 /* Roboto-Medium.ttf in Resources */,
 				33E42A3A2A6F288D004ED398 /* Roboto-LightItalic.ttf in Resources */,
@@ -590,6 +604,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		336BCF1E2ABA07DD000C6756 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		337667DA2A6DE505003482AD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -601,6 +623,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		336BCF1F2ABA07DD000C6756 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 336BCF1E2ABA07DD000C6756 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		336BCF212ABA07DD000C6756 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 336BCF1E2ABA07DD000C6756 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		336BCF232ABA07DD000C6756 /* FirebaseRemoteConfigSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 336BCF1E2ABA07DD000C6756 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
+		};
 		337667DB2A6DE505003482AD /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 337667DA2A6DE505003482AD /* XCRemoteSwiftPackageReference "Kingfisher" */;
